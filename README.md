@@ -11,14 +11,34 @@
   * [Setup - Git Repo](#part-4000)
   * [Setup - Git Releases and Tags](#part-5000)
   * [Feature - CSV Upload and Display](#part-6000)
+  * [Feature - Search and Filter Data Uploaded from CSV with Pagination](#part-6000)
 
 ---
+
+## Instructions
+
+* Install System Requirements
+* Install Gems
+* Run PostgreSQL
+* Run Rails Server
+* Go to http://localhost:3000
+* Click "Choose File" (to upload a CSV)
+* Select the [products.csv](https://github.com/ltfschoen/rails_csv_app/blob/master/products.csv) file located in the root directory
+* Click "Import CSV"
+* Click the "1", "2", "Next" or "Previous" to change Page using Pagination
+* Click the column Labels (i.e. "Id", "Name", "Price", "Quantity", "Released") to filter ordering ascending/descending
+* Enter a value in the input field (case sensitive). Click "Search" to filter list.
 
 ## Goals
 
 * [X] - Import pre-populated CSV into database from web form.
 * [X] - Present populated data from database in table view
-* [ ] - Use AJAX and apply basic filters on table so data updated without refreshing whole page.
+* [X] - Use AJAX and apply basic filters on table so data updated without refreshing whole page.
+* [ ] - Use `div`'s instead of `table`
+* [ ] - Use Sass instead of CSS
+* [ ] - Add Bootstrap or Foundation styling for buttons and tables
+* [ ] - Switch front-end to React.js or Angular.js instead of jQuery
+* [ ] - Add more Unit Tests
 
 ## System Requirements and Info<a id="part-1000"></a>
 * Show System Setup
@@ -218,7 +238,7 @@ upload the CSV by submitting form
 	rails dbconsole
 	select * from products;
 	rake db:drop
-	rake db:migrate RAILS_ENV=development
+	rake db:create db:migrate RAILS_ENV=development
 	```
 
 * Add Unit Tests by adding the following gem to allow use of `assigns` in Controller tests
@@ -230,6 +250,42 @@ upload the CSV by submitting form
 * Create New Release https://github.com/ltfschoen/rails_csv_app/releases/new
     * Feature Release (non-production) i.e. v0.2
 
+## Feature - Search and Filter Data Uploaded from CSV with Pagination <a id="part-7000"></a>
+
+* References
+	* http://stackoverflow.com/questions/28603881/how-to-create-a-ajax-filter-in-the-index-page
+	* http://railscasts.com/episodes/240-search-sort-paginate-with-ajax
+* Update to jQuery v3 and install jQuery UI Rails
+	* https://github.com/rails/jquery-rails
+		* Updating app/assets/javascripts/application.js with:
+			```
+			//= require jquery3
+			//= require jquery_ujs
+			```
+		* Install jquery-ui-rails Gem
+			* https://github.com/jquery-ui-rails/jquery-ui-rails
+
+* Add Willpaginate Gem
+	* https://github.com/mislav/will_paginate
+
+* Since using latest version of Rails 5.0.2 and Ruby 2.4.0 it was
+necessary to make the following key changes to the RailsCast #240 code that was
+written for Rails 3 back in 2010, to make it run without error:
+    * Replaced `scope` with `where(nil)` in app/models/product.rb
+    * Replaced `params.merge` with `request.parameters` in app/helpers/application_helper.rb
+    * Replaced `sort_column` with `self.sort_column`, and `sort_direction` with `self.sort_direction` in app/helpers/application_helper.rb
+    * Added `include ApplicationHelper` in app/controllers/products_controller.rb
+    * Whitelisted parameters in app/controllers/products_controller.rb with the following and by accessing parameters with `product_params[:search]` instead of just `params[:search]`:
+        ```
+          def product_params
+            params.permit(:id, :name, :price, :released_at, :search, :page, :sort, :utf8, :direction, :_)
+          end
+        ```
+    * In app/assets/javascripts/application.js, change jQuery `.live`(deprecated) to `.on`
+    * In app/views/products/index.html.erb had to change code to dynamically display title of page by using `<% content_for :title, "Products" %>` instead of just `<% title "Products" %>`
+
+* Add Sass Rails Gem
+    * http://stackoverflow.com/questions/15257555/how-to-reference-images-in-css-within-rails-4
 
 
 
