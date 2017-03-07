@@ -2,7 +2,7 @@
 
 # Screenshot
 
-![alt tag](https://raw.githubusercontent.com/ltfschoen/rails_csv_app/master/screenshot2.png)
+![alt tag](https://raw.githubusercontent.com/ltfschoen/rails_csv_app/master/screenshot3.png)
 
 ---
 
@@ -42,6 +42,8 @@
 * [X] - Use AJAX and apply basic filters on table so data updated without refreshing whole page.
 * [X] - Use Sass instead of CSS
 * [X] - Add Bootstrap 4 styling for buttons and tables and Responsive grid
+* [X] - Generate Fake CSV Data
+* [X] - Add Images using LorelPixel
 * [ ] - Switch front-end to React.js or Angular.js instead of jQuery
 * [ ] - Add more Unit Tests
 
@@ -305,3 +307,4 @@ written for Rails 3 back in 2010, to make it run without error:
         `faked_csv -i fake_csv_config.csv.json -o products.csv`
     * Insert the Labels at the top of the generated file, i.e.
         `uid,name,quantity,price,comments,released_at`
+    * Convert image to display correctly
