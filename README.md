@@ -1,5 +1,9 @@
 # README
 
+# Screenshot
+
+![alt tag](https://raw.githubusercontent.com/ltfschoen/rails_csv_app/master/screenshot.png)
+
 ---
 
 # Table of Contents
