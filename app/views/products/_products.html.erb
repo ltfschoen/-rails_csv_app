@@ -5,7 +5,7 @@
 	<thead class="thead-default">
 		<tr>
 			<th>#</th>
-			<th><%= sortable "id", "Id" %></th>
+			<th><%= sortable "uid", "Uid" %></th>
 			<th><%= sortable "name", "Name" %></th>
 			<th><%= sortable "price", "Price" %></th>
 			<th><%= sortable "quantity", "Quantity" %></th>
@@ -19,7 +19,7 @@
 	<tbody>
 		<tr>
 			<th scope="row"><%= index %></th>
-			<td class="text-primary"><%= product.id %></td>
+			<td class="text-primary"><%= product.uid %></td>
 			<td class="text-primary"><%= product.name %></td>
 			<td class="text-primary price"><%= number_to_currency(product.price) %></td>
 			<td class="text-primary"><%= product.quantity %></td>

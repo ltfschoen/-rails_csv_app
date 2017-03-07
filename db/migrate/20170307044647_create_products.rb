@@ -1,6 +1,7 @@
 class CreateProducts < ActiveRecord::Migration[5.0]
   def change
     create_table :products do |t|
+      t.string :uid
       t.string :name
       t.integer :quantity
       t.decimal :price, precision: 12, scale: 2
