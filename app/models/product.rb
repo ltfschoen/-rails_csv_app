@@ -3,7 +3,6 @@ class Product < ApplicationRecord
 
   def self.import(file_path)
     CSV.foreach(file_path, headers: true) do |row|
-
       product_hash = row.to_hash
       product = Product.where(id: product_hash["id"])
 

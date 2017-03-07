@@ -2,7 +2,7 @@
 
 # Screenshot
 
-![alt tag](https://raw.githubusercontent.com/ltfschoen/rails_csv_app/master/screenshot.png)
+![alt tag](https://raw.githubusercontent.com/ltfschoen/rails_csv_app/master/screenshot2.png)
 
 ---
 
@@ -17,6 +17,7 @@
   * [Feature - CSV Upload and Display](#part-6000)
   * [Feature - Search and Filter Data Uploaded from CSV with Pagination](#part-7000)
   * [Feature - Bootstrap](#part-8000)
+  * [Feature - Fake CSV Generator](#part-9000)
 
 ---
 
@@ -31,7 +32,7 @@
 * Select the [products.csv](https://github.com/ltfschoen/rails_csv_app/blob/master/products.csv) file located in the root directory
 * Click "Import CSV"
 * Click the "1", "2", "Next" or "Previous" to change Page using Pagination
-* Click the column Labels (i.e. "Id", "Name", "Price", "Quantity", "Released") to filter ordering ascending/descending
+* Click the column Labels (i.e. "Uid", "Name", "Price", "Quantity", "Released") to filter ordering ascending/descending
 * Enter a value in the input field (case sensitive). Click "Search" to filter list.
 
 ## Goals
@@ -282,7 +283,7 @@ written for Rails 3 back in 2010, to make it run without error:
     * Whitelisted parameters in app/controllers/products_controller.rb with the following and by accessing parameters with `product_params[:search]` instead of just `params[:search]`:
         ```
           def product_params
-            params.permit(:id, :name, :price, :released_at, :search, :page, :sort, :utf8, :direction, :_)
+            params.permit(:id, :uid, :name, :price, :released_at, :search, :page, :sort, :utf8, :direction, :_)
           end
         ```
     * In app/assets/javascripts/application.js, change jQuery `.live`(deprecated) to `.on`
@@ -294,3 +295,13 @@ written for Rails 3 back in 2010, to make it run without error:
 ## Feature - Bootstrap <a id="part-8000"></a>
 
 * Bootstrap 4 tables https://v4-alpha.getbootstrap.com/content/tables/
+
+### Feature - Fake CSV Generator <a id="part-9000"></a>
+
+* Faked CSV Gem https://github.com/jiananlu/faked_csv
+    * Create file `fake_csv_config.csv.json`
+    * Configure it to output CSV data in format desired and supports Faker Gem https://github.com/stympy/faker
+    * Execute it with the following to generate random CSV:
+        `faked_csv -i fake_csv_config.csv.json -o products.csv`
+    * Insert the Labels at the top of the generated file, i.e.
+        `uid,name,quantity,price,comments,released_at`

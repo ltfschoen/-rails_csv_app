@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170307044647) do
   enable_extension "plpgsql"
 
   create_table "products", force: :cascade do |t|
+    t.string   "uid"
     t.string   "name"
     t.integer  "quantity"
     t.decimal  "price",       precision: 12, scale: 2
