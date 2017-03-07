@@ -10,6 +10,7 @@
   * [Setup - Replace Unit Test with RSpec](#part-3000)
   * [Setup - Git Repo](#part-4000)
   * [Setup - Git Releases and Tags](#part-5000)
+  * [Feature - CSV Upload and Display](#part-6000)
 
 ---
 
@@ -167,3 +168,73 @@
 
 * Create New Release https://github.com/ltfschoen/rails_csv_app/releases/new
     * Pre-Release (non-production) i.e. v0.1
+
+## Feature - CSV Upload and Display <a id="part-6000"></a>
+
+### CSV Setup
+
+* Create new Git branch
+	```
+	git checkout -b feature/csv
+	```
+
+* Generate Model
+    ```
+    rails g model Product name:string quantity:integer price:decimal comments:string
+    ```
+
+* Modify the migration file as follows:
+	`t.decimal :price, precision: 12, scale: 2`
+
+* Migrate
+    `rake db:migrate RAILS_ENV=development`
+
+* Generate Controller with index and import Actions
+    `rails g controller Products index import`
+
+* Modify Routes as follows:
+	```
+	resources :products do
+	  collection { post :import }
+	end
+
+	root to: "products#index"
+	```
+
+* Update Product Model import function to accept CSV and process each row by
+comparing with Product table of database, and either updating or creating new entry
+
+* Update Product Controller's index action to fetch all Products to be available in view
+as @products. Also update its import action to call the Product Model's import function
+passing a given file parameter as argument, and then redirecting user to the root url
+
+* Update Product's index View to display list of products, including form allowing user to
+upload the CSV by submitting form
+
+* Create a CSV file called products.csv
+
+* Run server and upload the CSV file, then check it exists in database. Drop database and re-migrate to further test
+	```
+	rails dbconsole
+	select * from products;
+	rake db:drop
+	rake db:migrate RAILS_ENV=development
+	```
+
+* Add Unit Tests by adding the following gem to allow use of `assigns` in Controller tests
+	`gem 'rails-controller-testing', '~> 1.0.1'`
+
+* Modify Unit Tests for Product Controller and Model
+	* Reference: http://stackoverflow.com/questions/15175970/undefined-method-when-running-rspec-test-using-a-stub
+
+* Create New Release https://github.com/ltfschoen/rails_csv_app/releases/new
+    * Feature Release (non-production) i.e. v0.2
+
+
+
+
+
+
+
+
+
