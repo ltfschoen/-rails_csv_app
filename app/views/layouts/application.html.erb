@@ -12,7 +12,9 @@
   <body>
     <div id="container">
       <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          <%#= debug name.inspect %>
+          <% name = "info" if name == "notice" %>
+          <%= content_tag :div, msg, class: "alert alert-#{name}" %>
       <% end %>
       <%= content_tag :h1, yield(:title) %>
       <%= yield %>

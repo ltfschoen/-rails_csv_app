@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
 
   def product_params
     params.permit(:id, :name, :quantity, :price, :comments, :released_at,
-                  :file, :search, :page, :sort, :utf8, :direction, :_)
+                  :file, :search, :page, :sort, :utf8,
+                  :authenticity_token, :commit, :direction, :_)
   end
 end
