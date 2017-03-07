@@ -11,7 +11,7 @@
   * [Setup - Git Repo](#part-4000)
   * [Setup - Git Releases and Tags](#part-5000)
   * [Feature - CSV Upload and Display](#part-6000)
-  * [Feature - Search and Filter Data Uploaded from CSV with Pagination](#part-6000)
+  * [Feature - Search and Filter Data Uploaded from CSV with Pagination](#part-7000)
 
 ---
 
