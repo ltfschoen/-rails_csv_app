@@ -105,11 +105,12 @@
 	rake db:migrate RAILS_ENV=development
 	```
 
-* Run server
-	`rails s`
+* Launch the Rails server in separate Terminal tab automatically and opens it in web browser after 10 seconds using Shell Script:
+    `bash launch.sh`
 
-* Open app
-	`open http://localhost:3000`
+    * Alternatively: Run server command, and then manually go to url, or in a separate tab run command to open app in browser
+    	`rails s`
+    	`open http://localhost:3000`
 
 ## Setup - Replace Test Unit / Minitest with RSpec <a id="part-3000"></a>
 
