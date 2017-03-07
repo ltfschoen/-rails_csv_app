@@ -55,3 +55,6 @@ bower.json
 
 # Ignore Jetbrains IDEA files
 .idea/
+
+# Ignore .DS_Store
+.DS_Store

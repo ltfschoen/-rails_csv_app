@@ -1,0 +1,29 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table class="pretty">
+	<thead>
+		<tr>
+			<th><%= sortable "id", "Id" %></th>
+			<th><%= sortable "name", "Name" %></th>
+			<th><%= sortable "price", "Price" %></th>
+			<th><%= sortable "quantity", "Quantity" %></th>
+			<th><%= sortable "comments", "Comments" %></th>
+			<th><%= sortable "released_at", "Released" %></th>
+		</tr>
+	</thead>
+	<% @products.each do |product| %>
+	<tbody>
+		<tr>
+			<td><%= product.id %></td>
+			<td><%= product.name %></td>
+			<td class="price"><%= number_to_currency(product.price) %></td>
+			<td><%= product.quantity %></td>
+			<td><%= product.comments %></td>
+			<td><%= product.released_at.strftime("%B %e, %Y") %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+<%= will_paginate @products %>
