@@ -7,6 +7,8 @@
 ---
 
 # Table of Contents
+  * [Instructions](#part-500)
+  * [Goals](#part-750)
   * [System Requirements and Info](#part-1000)
   * [Database](#part-1100)
   * [Documentation Links](#part-1500)
@@ -21,12 +23,12 @@
 
 ---
 
-## Instructions
+## Instructions <a id="part-500"></a>
 
 * Install System Requirements
-* Install Gems
+* Install Gems `bundle install`
 * Run PostgreSQL
-* Run Rails Server
+* Run Rails Server `rails s`
 * Go to http://localhost:3000
 * Click "Choose File" (to upload a CSV)
 * Select the [products.csv](https://github.com/ltfschoen/rails_csv_app/blob/master/products.csv) file located in the root directory
@@ -35,7 +37,7 @@
 * Click the column Labels (i.e. "Uid", "Name", "Price", "Quantity", "Released") to filter ordering ascending/descending
 * Enter a value in the input field (case sensitive). Click "Search" to filter list.
 
-## Goals
+## Goals <a id="part-750"></a>
 
 * [X] - Import pre-populated CSV into database from web form.
 * [X] - Present populated data from database in table view
