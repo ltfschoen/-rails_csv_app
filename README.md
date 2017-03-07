@@ -6,9 +6,11 @@ application up and running.
 ---
 
 # Table of Contents
-  * [System Requirements](#part-1000)
+  * [System Requirements and Info](#part-1000)
   * [Database](#part-1100)
-  * [Original Setup Steps](#part-2000)
+  * [Documentation Links](#part-1500)
+  * [Setup - Legacy Initial Steps](#part-2000)
+  * [Setup - Replace Unit Test with RSpec](#part-3000)
 
 ---
 
@@ -38,7 +40,12 @@ application up and running.
 * Open PostgreSQL Database console automatically http://guides.rubyonrails.org/command_line.html
     `rails dbconsole`
 
-## Original Setup Steps <a id="part-2000"></a>
+## Documentation Links <a id="part-1500"></a>
+
+* Testing
+    * RSpec Rails https://github.com/rspec/rspec-rails
+
+## Setup - Legacy Initial Steps <a id="part-2000"></a>
 
 * Create Project
 	```
@@ -87,8 +94,12 @@ application up and running.
 
 * Check database.yml is setup correctly for development
 
-* Install default Gems in Gemfile
-	`bundle install`
+* Check that using custom GemSet. Install default Gems in Gemfile
+    ```
+    rvm --ruby-version use 2.4.0@rails_csv_app
+    gem install bundler
+	bundle install
+	```
 
 * Migrate into PostgreSQL Database
 	```
@@ -102,6 +113,25 @@ application up and running.
 * Open app
 	`open http://localhost:3000`
 
+## Setup - Replace Test Unit / Minitest with RSpec <a id="part-3000"></a>
 
+* Optionally run Test Unit one last time before sending it to oblivion
+    `rake test`
 
+* Remove Test Unit's directory and files
+    `rm -rf test/`
 
+* Add RSpec to test group within Gemfile to retrieve latest patch https://github.com/rspec/rspec-rails
+    `gem 'rspec-rails', '~> 3.5.2'`
+
+* Check that using Custom GemSet. Install Gems
+    ```
+    rvm --ruby-version use 2.4.0@rails_csv_app
+    bundle install
+    ```
+
+* Initialise /spec directory
+    `rails generate rspec:install`
+
+* Run RSpec tests
+    `rspec`
