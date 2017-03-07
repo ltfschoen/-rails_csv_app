@@ -2,7 +2,7 @@
 
 # Screenshot
 
-![alt tag](https://raw.githubusercontent.com/ltfschoen/rails_csv_app/master/screenshot2.png)
+![alt tag](https://raw.githubusercontent.com/ltfschoen/rails_csv_app/master/screenshot3.png)
 
 ---
 
