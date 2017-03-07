@@ -9,8 +9,15 @@
   * [Setup - Legacy Initial Steps](#part-2000)
   * [Setup - Replace Unit Test with RSpec](#part-3000)
   * [Setup - Git Repo](#part-4000)
+  * [Setup - Git Releases and Tags](#part-5000)
 
 ---
+
+## Goals
+
+* [X] - Import pre-populated CSV into database from web form.
+* [X] - Present populated data from database in table view
+* [ ] - Use AJAX and apply basic filters on table so data updated without refreshing whole page.
 
 ## System Requirements and Info<a id="part-1000"></a>
 * Show System Setup
@@ -24,6 +31,7 @@
     * Rack - 2.0.1
     * Node.js - 7.7.1 (V8 runtime)
     * PostgreSQL - 9.6.2
+    * RSpec - 3.5.4
     * OS - macOS El Capitan
 
 * Show Codebase Stats
@@ -37,6 +45,11 @@
 	`brew services start postgresql`
 * Open PostgreSQL Database console automatically http://guides.rubyonrails.org/command_line.html
     `rails dbconsole`
+
+* Show database table contents
+    ```
+    select * from products;
+    ```
 
 ## Documentation Links <a id="part-1500"></a>
 
@@ -101,8 +114,7 @@
 
 * Migrate into PostgreSQL Database
 	```
-	rake db:create
-	rake db:migrate RAILS_ENV=development
+	rake db:create db:migrate RAILS_ENV=development
 	```
 
 * Launch the Rails server in separate Terminal tab automatically and opens it in web browser after 10 seconds using Shell Script:
@@ -150,3 +162,8 @@
 
 * Force push to remote branch to overwrite existing history
     `git push -f origin master`
+
+## Setup - Git Release and Tags <a id="part-5000"></a>
+
+* Create New Release https://github.com/ltfschoen/rails_csv_app/releases/new
+    * Pre-Release (non-production) i.e. v0.1
