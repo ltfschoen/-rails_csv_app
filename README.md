@@ -11,6 +11,7 @@ application up and running.
   * [Documentation Links](#part-1500)
   * [Setup - Legacy Initial Steps](#part-2000)
   * [Setup - Replace Unit Test with RSpec](#part-3000)
+  * [Setup - Git Repo](#part-4000)
 
 ---
 
@@ -135,3 +136,19 @@ application up and running.
 
 * Run RSpec tests
     `rspec`
+
+## Setup - Git Repo <a id="part-4000"></a>
+
+* Create new project on GitHub with MIT licence i.e. https://github.com/ltfschoen/rails_csv_app
+
+* Show remote branches for current repo
+    `git remote -v`
+
+* Set a remote URL using SSH
+    `git remote add origin git@github.com:ltfschoen/rails_csv_app.git`
+
+* Use [Bulletproof Git Workflow](https://gist.github.com/ltfschoen/3c7a085f132baf4aff13c9d561b35d03) to rebase with remote branch and get the MIT licence before pushing new changes
+    `git pull --rebase origin master`
+
+* Force push to remote branch to overwrite existing history
+    `git push -f origin master`
