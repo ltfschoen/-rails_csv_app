@@ -12,6 +12,7 @@
   * [Setup - Git Releases and Tags](#part-5000)
   * [Feature - CSV Upload and Display](#part-6000)
   * [Feature - Search and Filter Data Uploaded from CSV with Pagination](#part-7000)
+  * [Feature - Bootstrap](#part-8000)
 
 ---
 
@@ -34,9 +35,8 @@
 * [X] - Import pre-populated CSV into database from web form.
 * [X] - Present populated data from database in table view
 * [X] - Use AJAX and apply basic filters on table so data updated without refreshing whole page.
-* [ ] - Use `div`'s instead of `table`
-* [ ] - Use Sass instead of CSS
-* [ ] - Add Bootstrap or Foundation styling for buttons and tables
+* [X] - Use Sass instead of CSS
+* [X] - Add Bootstrap 4 styling for buttons and tables and Responsive grid
 * [ ] - Switch front-end to React.js or Angular.js instead of jQuery
 * [ ] - Add more Unit Tests
 
@@ -287,10 +287,6 @@ written for Rails 3 back in 2010, to make it run without error:
 * Add Sass Rails Gem
     * http://stackoverflow.com/questions/15257555/how-to-reference-images-in-css-within-rails-4
 
+## Feature - Bootstrap <a id="part-8000"></a>
 
-
-
-
-
-
-
+* Bootstrap 4 tables https://v4-alpha.getbootstrap.com/content/tables/

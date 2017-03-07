@@ -23,6 +23,14 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 6.0.1'
 
+# Use Bootstrap 4
+gem 'bootstrap', '~> 4.0.0.alpha6'
+
+# Bootstrap tooltips and popovers depend on http://tether.io/ for positioning.
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
+
 # Pagination
 gem 'will_paginate', '~> 3.1.0'
 
